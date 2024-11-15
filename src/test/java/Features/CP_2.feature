@@ -1,0 +1,20 @@
+#Proyecto: Prueba Tecnica Tecnova
+@regresiva
+Feature: Inicio Valido y compra de productos
+
+  Background: Ingresar a la Web Abstracta.us
+    Given Ingreso a la Web Abstracta
+
+  @CP_02
+  Scenario Outline: Flujo E2E compra de productos
+    When Ingreso credenciales validas
+    And Presiono boton Login
+    And Ingresar a Seccion YourStore
+    And Agrego productos al carrito
+    And Elimino producto del carrito
+    And Realizo el Checkout
+    Then Finalizo Existosamente la Compra
+
+    Examples:
+      | email          | password |  |
+      | fake@gmail.com | 1234     |  |
