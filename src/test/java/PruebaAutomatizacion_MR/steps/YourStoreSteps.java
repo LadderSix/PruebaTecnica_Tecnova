@@ -20,12 +20,12 @@ public class YourStoreSteps {
 
         myAccountPage.menuHome();
 
-        myAccountPage.agregoItemCamara();
+        myAccountPage.agregoItemIphone();
         myAccountPage.agregoAlCarrito();
 
         myAccountPage.menuHome();
 
-        myAccountPage.agregoItemMonitor();
+        myAccountPage.agregoItemCamara();
         myAccountPage.agregoAlCarrito();
 
         myAccountPage.irAlCarrito();

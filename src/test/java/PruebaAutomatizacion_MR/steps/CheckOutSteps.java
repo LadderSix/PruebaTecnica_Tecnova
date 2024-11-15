@@ -13,8 +13,10 @@ public class CheckOutSteps {
         checkOutPage.realizarCheckout();
     }
 
-    @Then("Finalizo Existosamente la Compra")
-    public void finalizoExistosamenteLaCompra() {
-
+    @And("Ingreso a seccion Order History")
+    public void ingresoASeccionOrderHistory() {
+        checkOutPage.irASeccionOrderHistory();
     }
+
+    
 }

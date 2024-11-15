@@ -23,16 +23,18 @@ public class ShoppingCartPage {
     @FindBy(xpath = "(//button[@title=\"Remove\"])[1]")
     private WebElement btnEliminarProducto;
 
-    @FindBy(xpath = "//a//strong[contains(text(),\"Checkout\")]")
+    @FindBy(xpath = "//span[contains(text(),'Checkout')]")
     private WebElement btnCheckout;
+
 
     public void eliminaItem(){
         MetodosGenericos.esperar(2);
         btnEliminarProducto.click();
+        System.out.println("Item Eliminado!");
     }
 
     public void irAlCheckout(){
-        MetodosGenericos.esperar(2);
+        MetodosGenericos.esperar(5);
         btnCheckout.click();
     }
 }

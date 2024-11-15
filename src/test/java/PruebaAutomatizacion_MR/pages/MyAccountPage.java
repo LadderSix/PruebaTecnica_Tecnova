@@ -37,10 +37,13 @@ public class MyAccountPage {
     private WebElement itemMacbook;
 
     @FindBy(xpath = "//div[@class='image']//img[@title='iPhone']")
-    private WebElement itemCamara;
+    private WebElement itemiPhone;
 
     @FindBy(xpath = "//img[@title='Apple Cinema 30\"']")
     private WebElement itemMonitor;
+
+    @FindBy(xpath = "//div[@class='image']//img[@title='Canon EOS 5D']")
+    private WebElement itemCamara;
 
     @FindBy(xpath = "//button[@id='button-cart']")
     private WebElement btnAddToCart;
@@ -54,7 +57,7 @@ public class MyAccountPage {
    @FindBy(xpath = "//textarea[@Placeholder=\"Textarea\"]")
    private WebElement textareaMonitor;
 
-   @FindBy(xpath = "//input[@id='input-option222']")
+   @FindBy(xpath = "(//input)[13]")
    private WebElement btnUploadFile;
 
     public void ingresoSeccionYourStore() {
@@ -68,9 +71,8 @@ public class MyAccountPage {
     }
 
     public void irAlCarrito(){
-        MetodosGenericos.waitExplicit(btnShoppingCart,2);
         btnShoppingCart.click();
-
+        MetodosGenericos.esperar(3);
     }
 
     public void agregoItemMacbook() {
@@ -79,9 +81,19 @@ public class MyAccountPage {
         System.out.println(response);
 
         if (response) {
-            MetodosGenericos.scrollElement(itemMacbook,driver);
+            MetodosGenericos.scrollElement(itemMacbook, driver);
             itemMacbook.click();
-            System.out.println("Item Agregado!");
+        }
+    }
+
+    public void agregoItemIphone() {
+
+        boolean response = MetodosGenericos.visualizarObjeto(itemiPhone, 20);
+        System.out.println(response);
+
+        if (response) {
+            MetodosGenericos.scrollElement(itemiPhone,driver);
+            itemiPhone.click();
         }
     }
 
@@ -93,11 +105,14 @@ public class MyAccountPage {
         if (response) {
             MetodosGenericos.scrollElement(itemCamara,driver);
             itemCamara.click();
-            System.out.println("Item Agregado!");
         }
+
+        Select drpCountry = new Select(driver.findElement(By.name("option[226]")));
+        drpCountry.selectByVisibleText("Red ");
+
     }
 
-    public void agregoItemMonitor() {
+    /*public void agregoItemMonitor() {
 
         boolean response = MetodosGenericos.visualizarObjeto(itemMonitor, 20);
         System.out.println(response);
@@ -115,21 +130,20 @@ public class MyAccountPage {
         textareaMonitor.sendKeys("esta es una prueba automatizada por Matias Rojas");
 
         File file = new File("C:\\Users\\Matias Rojas\\Downloads\\Evaluacion Automatización 2024.pdf");
-
         System.out.println("Cargando archivo!");
-        MetodosGenericos.accionSenkeys(btnUploadFile,file.getAbsolutePath());
         MetodosGenericos.esperar(3);
-        driver.switchTo().alert().accept();
-        System.out.println("Archivo cargado");
+        btnUploadFile.sendKeys(file.getAbsolutePath());
+        MetodosGenericos.esperar(3);
 
-        System.out.println("Item Agregado!");
-    }
+        //driver.switchTo().alert().accept();
+        System.out.println("Archivo cargado");
+    }*/
 
     public void agregoAlCarrito(){
         //MetodosGenericos.waitExplicit(btnAddToCart,2);
         MetodosGenericos.accionClick(btnAddToCart);
+        System.out.println("Item Agregado!");
         MetodosGenericos.esperar(1);
-
     }
 
     public void msjExitosoProductoAgregadoAlCarrito(){
