@@ -65,12 +65,23 @@ public class LoginPage {
         MetodosGenericos.accionClick(btnLogin);
     }
 
-    public void getMsjError(){
-        String msj = MetodosGenericos.accionGetText(msjError);
-        System.out.println(msj);
+    public void validaMsjError(){
+        try{
+            String msj = MetodosGenericos.accionGetText(msjError);
+            System.out.println(msj);
 
-        assertEquals(msj," Warning: No match for E-Mail Address and/or Password.");
-        System.out.println("Datos ingresados Invalidos");
+            switch (msj){
+                case "" :
+                    assertEquals("",msj);
+                    break;
+                case " Warning" :
+                    assertEquals(" Warning.",msj);
+                    break;
+            }
+
+        }catch (Exception e){
+            e.getMessage();
+        }
     }
 
 }

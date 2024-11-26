@@ -26,7 +26,7 @@ public class LoginSteps {
 
     @Then("Visualizamos mensaje de error por credenciales incorrectas")
     public void visualizamosMensajeDeError() {
-        loginPage.getMsjError();
+        loginPage.validaMsjError();
     }
 
 }
