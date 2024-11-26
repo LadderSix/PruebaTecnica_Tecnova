@@ -26,6 +26,9 @@ public class ShoppingCartPage {
     @FindBy(xpath = "//span[contains(text(),'Checkout')]")
     private WebElement btnCheckout;
 
+    @FindBy(xpath = "")
+    private WebElement shoppingCart;
+
 
     public void eliminaItem(){
         MetodosGenericos.esperar(2);
@@ -34,7 +37,7 @@ public class ShoppingCartPage {
     }
 
     public void irAlCheckout(){
-        MetodosGenericos.esperar(5);
-        btnCheckout.click();
+        MetodosGenericos.visualizarObjeto(btnCheckout, 20);
+
     }
 }

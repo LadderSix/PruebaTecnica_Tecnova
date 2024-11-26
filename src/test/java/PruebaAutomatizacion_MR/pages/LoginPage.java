@@ -3,8 +3,10 @@ package PruebaAutomatizacion_MR.pages;
 
 import PruebaAutomatizacion_MR.constants.Constant;
 import PruebaAutomatizacion_MR.driverConfig.DriverContext;
+import PruebaAutomatizacion_MR.utils.PropertyReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,9 +53,9 @@ public class LoginPage {
     }
 
     public void ingresoCredencialesCorrectas() {
-        MetodosGenericos.accionSenkeys(imputEmail, Constant.mail);
+        MetodosGenericos.accionSenkeys(imputEmail, PropertyReader.getProperty("email"));
         MetodosGenericos.esperar(2);
-        MetodosGenericos.accionSenkeys(imputPassword, Constant.pass);
+        MetodosGenericos.accionSenkeys(imputPassword, PropertyReader.getProperty("pass"));
         System.out.println("Credenciales Validas Ingresadas !");
 
     }
@@ -67,16 +69,8 @@ public class LoginPage {
         String msj = MetodosGenericos.accionGetText(msjError);
         System.out.println(msj);
 
-        try{
-            if (msj.equals(" Warning: No match for E-Mail Address and/or Password.")){
-                System.out.println("Datos ingresados Invalidos");
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
+        assertEquals(msj," Warning: No match for E-Mail Address and/or Password.");
+        System.out.println("Datos ingresados Invalidos");
     }
 
 }

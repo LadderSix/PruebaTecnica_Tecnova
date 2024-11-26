@@ -30,54 +30,14 @@ private String extensionDriver = "";
     	      this.extensionDriver = ".exe";
     	    System.out.println(nav);
     	    switch (nav) {
-    	       /*case Chrome:
-    	        System.out.println("Se selecciona Chrome");
-				ChromeOptions chromeOptions = new ChromeOptions();
-				if (os.contains("linux")){
-					System.out.println("entre a linux");
-					System.out.println(System.getProperty("user.name"));
-
-					chromeOptions.addArguments("--disable-dev-shm-usage");
-					chromeOptions.addArguments("--no-sandbox");
-					chromeOptions.addArguments("--disable-gpu");
-					chromeOptions.addArguments("--headless");
-					chromeOptions.addArguments("--ignore-ssl-errors=yes");
-					//chromeOptions.addArguments("--disable-dev-shm-usage");
-					//chromeOptions.addArguments("--ignore-certificate-errors");
-					//chromeOptions.addArguments("--disable-extensions");
-					//chromeOptions.addArguments("--disable-gpu");
-					//chromeOptions.addArguments("--no-sandbox");
-					chromeOptions.addArguments("--window-size=1920x1080");
-					//chromeOptions.addArguments("--no-setuid-sandbox");
-
-				}
-				WebDriverManager.chromedriver().setup();
-				chromeOptions.addArguments("--remote-allow-origins=*");
-    	        this.driver = (WebDriver)new ChromeDriver(chromeOptions);
-    	        this.driver.manage().deleteAllCookies();
-    	        break;*/
 				case Chrome:
 					System.out.println("Se selecciona Chrome");
 					ChromeOptions chromeOptions = new ChromeOptions();
 					WebDriverManager.chromedriver().setup();
-					//System.setProperty("webdriver.chrome.driver", "C:\\IdeaProjects\\PrTecnica_Tsoft\\driver\\chromedriver.exe");
 					chromeOptions.addArguments("--remote-allow-origins=*");
 					this.driver = new ChromeDriver(chromeOptions);
 					this.driver.manage().deleteAllCookies();
 					break;
-    	      /*case Explorer:
-    	        System.out.println("Se selecciona Explorer");
-    	        this.capabilities.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, false);
-    	        this.capabilities.setCapability(InternetExplorerDriver.REQUIRE_WINDOW_FOCUS, false);
-    	        this.capabilities.setCapability(InternetExplorerDriver.UNEXPECTED_ALERT_BEHAVIOR, true);
-    	        this.capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-    	        this.capabilities.setCapability(
-    	            InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-    	        this.capabilities.setJavascriptEnabled(true);
-    	        WebDriverManager.iedriver().setup();
-    	        this.driver = (WebDriver)new InternetExplorerDriver();
-    	        this.capabilities.setBrowserName("Explorer");
-    	        break;*/
     	      case Firefox:
     	        System.out.println("Se selecciona Firefox");
     	        WebDriverManager.firefoxdriver().setup();
